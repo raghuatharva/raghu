@@ -9,5 +9,6 @@ x-1=2
 x/2=4
 
 #aata pata manekadeg ota
+#alvaabossu
 
 
