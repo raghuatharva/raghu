@@ -3,5 +3,5 @@
 PERSON1=RAMESH
 PERSON2=SURESH
 
-echo "ramesh: hi suresh "
-echo "suresh: en ramesh samachara"
+echo "$PERSON1: hi $PERSON2 "
+echo "$PERSON2: en $PERSON1 samachara"
