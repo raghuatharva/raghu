@@ -1,4 +1,4 @@
 if [ $(id -u) -ne 0 ]
-then 
+them
 echo 1 2
 
