@@ -6,14 +6,14 @@ TIMESTAMP=$(date)
 LOG_FILE=$LOGS_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log
 mkdir -p $LOGS_FOLDER
 
-R="e/[31m"
-G="e/[32m"
-N="e/[0m"
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
 
 CHECK_ROOT() {
     if [ $(id -u) -ne 0 ]
         then
-        echo -e" $R you dont have root previlages to run this script $N"
+        echo -e " $R you dont have root previlages to run this script $N"
         exit 1
     fi
 }
@@ -45,9 +45,10 @@ do
 dnf list installed $PACKAGE
     if [ $? -ne 0 ]
         then
-    echo " $package is not installed yet . going to install " | tee -a &>> "$LOG_FILE"
+    echo " $PACKAGE is not installed yet . going to install " | tee -a "$LOG_FILE"
+    dnf install $package -y &>>$LOG_FILE
     VALIDATE $? " installing $PACKAGE " 
     else
-    echo -e "$G $PACKAGE IS ALREADY INSTALLED . NOTHING TO DO $N " | tee -a &>> "$LOG_FILE"
+    echo -e "$G $PACKAGE IS ALREADY INSTALLED . NOTHING TO DO $N " | tee -a "$LOG_FILE"
 fi
 done
