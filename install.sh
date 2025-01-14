@@ -6,6 +6,7 @@ if [ $userid -eq 0 ]; then
         else 
         echo " you dont have root access , BUGGER ;exiting ..."
         exit 1
+fi ## else loops alli if condition barangilla .. if loop end aadmele barbodu ashte
     if [ $? -eq 0 ]; then
             echo " already installed "
             else
@@ -18,4 +19,3 @@ dnf install mysql -y
             exit 1
         fi
     fi
-fi
