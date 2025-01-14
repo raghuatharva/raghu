@@ -13,7 +13,7 @@ N="e/[0m"
 CHECK_ROOT() {
     if [ $(id -u) -ne 0 ]
         then
-        ech0 -e" $R you dont have root previlages to run this script $N"
+        echo -e" $R you dont have root previlages to run this script $N"
         exit 1
     fi
 }
@@ -21,14 +21,14 @@ CHECK_ROOT() {
 VALIDATE() {
     if [ $1 -ne 0 ]
     then 
-    echo -e" $2 is $R FAILED $N" | tee -a $LOG_FILE
+    echo -e " $2 is $R FAILED $N" | tee -a $LOG_FILE
     else
-    echo -e"$2 is $G SUCCESS $N" | tee -a $LOG_FILE
+    echo -e "$2 is $G SUCCESS $N" | tee -a $LOG_FILE
     fi
 }
 
 USAGE() {
-    echo -e "$R USAGE: package name mention maado bolimagane $N " &>>"$LOG_FILE"
+    echo -e "$R USAGE: package name mention maado bolimagane $N " | tee -a "$LOG_FILE"
     exit 1 
 }
 
