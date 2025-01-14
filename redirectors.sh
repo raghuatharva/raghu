@@ -6,12 +6,12 @@ TIMESTAMP=$(date)
 LOG_FILE=$LOGS_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log
 mkdir -p $LOGS_FOLDER
 
-R= "e/[31m"
-G= "e/[32m"
-N= "e/[0m"
+R="e/[31m"
+G="e/[32m"
+N="e/[0m"
 
 CHECK_ROOT() {
-    if [$(id -u) -ne 0]
+    if [ $(id -u) -ne 0 ]
         then
         ech0 -e" $R you dont have root previlages to run this script $N"
         exit 1
@@ -19,7 +19,7 @@ CHECK_ROOT() {
 }
 
 VALIDATE() {
-    if [$1 -ne 0]
+    if [ $1 -ne 0 ]
     then 
     echo -e" $2 is $R FAILED $N" | tee -a $LOG_FILE
     else
@@ -35,7 +35,7 @@ USAGE() {
 echo " script started at : $(date)"
 CHECK_ROOT
 
-if [ $# -eq 0] 
+if [ $# -eq 0 ] 
 then 
     USAGE
 fi
@@ -43,7 +43,7 @@ fi
 for PACKAGE in $@
 do
 dnf installed list $PACKAGE
-    if [$? -ne 0]
+    if [ $? -ne 0 ]
         then
     echo " $package is not installed yet . going to install " | tee -a &>> $LOG_FILE
     VALIDATE $? " installing $PACKAGE " 
