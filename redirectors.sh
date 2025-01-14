@@ -28,7 +28,7 @@ VALIDATE() {
 }
 
 USAGE() {
-    echo -e "$R USAGE: package name mention maado bolimagane $N " &>>$LOG_FILE
+    echo -e "$R USAGE: package name mention maado bolimagane $N " &>>"$LOG_FILE"
     exit 1 
 }
 
@@ -45,9 +45,9 @@ do
 dnf list installed $PACKAGE
     if [ $? -ne 0 ]
         then
-    echo " $package is not installed yet . going to install " | tee -a &>> $LOG_FILE
+    echo " $package is not installed yet . going to install " | tee -a &>> "$LOG_FILE"
     VALIDATE $? " installing $PACKAGE " 
     else
-    echo -e "$G $PACKAGE IS ALREADY INSTALLED . NOTHING TO DO $N " | tee -a &>> $LOG_FILE
+    echo -e "$G $PACKAGE IS ALREADY INSTALLED . NOTHING TO DO $N " | tee -a &>> "$LOG_FILE"
 fi
 done
