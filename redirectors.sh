@@ -29,7 +29,7 @@ VALIDATE() {
 
 USAGE() {
     echo -e "$R USAGE: package name mention maado bolimagane $N " &>>$LOG_FILE
-    exit1 
+    exit 1 
 }
 
 echo " script started at : $(date)"
@@ -42,7 +42,7 @@ fi
 
 for PACKAGE in $@
 do
-dnf installed list $PACKAGE
+dnf list installed $PACKAGE
     if [ $? -ne 0 ]
         then
     echo " $package is not installed yet . going to install " | tee -a &>> $LOG_FILE
